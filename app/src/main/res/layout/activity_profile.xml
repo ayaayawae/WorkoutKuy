@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#082032">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/pp"
+            app:civ_border_color="#FFFF"
+            app:civ_border_width="2dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="John Doe"
+                android:textSize="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                style="@style/CustomFont"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/edit"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#334756"
+            android:layout_marginTop="30dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@drawable/customborder"
+                android:padding="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/cup"
+                    app:civ_border_color="#FFFF"
+                    app:civ_border_width="2dp" />
+                <TextView
+                    android:id="@+id/nama"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="14 Days Streak"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    style="@style/CustomFont"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
