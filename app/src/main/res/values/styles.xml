@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="CustomFont">
-        <item name="android:fontFamily">@font/AbelRegular</item>
-        <item name="android:textSize">48sp</item>
-        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/abelregularfont</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/orange</item>
-        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+        <item name="android:textFontWeight" tools:targetApi="p">800</item>
     </style>
 </resources>
