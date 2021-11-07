@@ -5,17 +5,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/darkBlue"
     tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WorkOutKuy"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:textSize="48sp"
-        android:textStyle="normal"
-        te
+        android:layout_marginTop="100dp"
+        android:text="WorkOutKuy"
+        style="@style/CustomFont"/>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/customborder"
+        android:backgroundTint=""
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Login"
+            android:textSize="36sp"
+            android:textAlignment="center"
+            style="@style/CustomFont" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Email"
+            android:textSize="24sp"
+            android:textAlignment="textStart"
+            style="@style/CustomFont" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@color/darkBlue"
+            android:foreground="@drawable/customborder"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Password"
+            android:textSize="24sp"
+            android:textAlignment="textStart"
+            style="@style/CustomFont" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@drawable/customborder"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/drawable/customborder.xml" value="0.2948717948717949" />
+        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/font/abelfont.xml" value="0.29907407407407405" />
+        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
       </map>
     </option>
