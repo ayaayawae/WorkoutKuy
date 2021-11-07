@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="#082032">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/scroll_todo_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/todo_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                style="@style/CustomFont"
+                android:textSize="32dp"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:text="Today's to do list"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exercise_card1"
+                android:layout_width="380dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#80F0F2FF">
+                <LinearLayout
+                    android:id="@+id/LL_e1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/situp"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/situp"/>
+                    <LinearLayout
+                        android:id="@+id/LL_situp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp">
+                        <TextView
+                            android:id="@+id/sit_up"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22sp"
+                            android:textColor="#FFFFFF"
+                            style="@style/CustomFont"
+                            android:gravity="center_vertical"
+                            android:hint="Sit Up"/>
+                        <TextView
+                            android:id="@+id/intensity1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22dp"
+                            android:gravity="top"
+                            android:hint="25 Reps x 4 Sets"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exercise_card2"
+                android:layout_width="380dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#80F0F2FF">
+                <LinearLayout
+                    android:id="@+id/LL_e2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/pushup"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/pushup"/>
+                    <LinearLayout
+                        android:id="@+id/LL_pushup"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp">
+                        <TextView
+                            android:id="@+id/push_up"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22sp"
+                            android:textColor="#FFFFFF"
+                            style="@style/CustomFont"
+                            android:gravity="center_vertical"
+                            android:hint="Push Up"/>
+                        <TextView
+                            android:id="@+id/intensity2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22dp"
+                            android:gravity="top"
+                            android:hint="25 Reps x 4 Sets"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exercise_card3"
+                android:layout_width="380dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#80F0F2FF">
+                <LinearLayout
+                    android:id="@+id/LL_e3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+                    <ImageView
+                        android:id="@+id/squat_img"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/squat"/>
+                    <LinearLayout
+                        android:id="@+id/LL_squat"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp">
+                        <TextView
+                            android:id="@+id/squat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22sp"
+                            android:textColor="#FFFFFF"
+                            style="@style/CustomFont"
+                            android:gravity="center_vertical"
+                            android:hint="Sit Up"/>
+                        <TextView
+                            android:id="@+id/intensity3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22dp"
+                            android:gravity="top"
+                            android:hint="25 Reps x 4 Sets"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
