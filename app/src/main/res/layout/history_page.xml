@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#082032">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/scroll_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/history_card1"
+                android:layout_width="380dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#80F0F2FF">
+                <LinearLayout
+                    android:id="@+id/LL_history1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/historyCheck"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/ceklis"/>
+                    <LinearLayout
+                        android:id="@+id/LL_date"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp">
+                        <TextView
+                            android:id="@+id/history_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:hint="Date History1"/>
+                        <TextView
+                            android:id="@+id/history_hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22dp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:hint="Hour History1"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        <!--    Layout 2    -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/history_card2"
+                android:layout_width="380dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                android:backgroundTint="#80F0F2FF">
+                <LinearLayout
+                    android:id="@+id/LL_history2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/historyCheck2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center|start"
+                        android:src="@drawable/ceklis"/>
+                    <LinearLayout
+                        android:id="@+id/LL_date2"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp">
+                        <TextView
+                            android:id="@+id/history_date2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:hint="Date History2"/>
+                        <TextView
+                            android:id="@+id/history_hour2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="22dp"
+                            android:hint="Hour History2"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+<!--    Lanjut Sini yak -->
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

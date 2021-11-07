@@ -3,12 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/edric/Desktop/smt5/MobileApp/GIT/WorkoutKuy/app/src/main/res/layout/activity_profile.xml" value="0.18" />
+        <entry key="..\:/Users/edric/Desktop/smt5/MobileApp/GIT/WorkoutKuy/app/src/main/res/layout/history_page.xml" value="0.22" />
         <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
-        <entry key="..\:/kuliah semester 5/APP ANDROID/Workout/WorkoutKuy/app/src/main/res/drawable/customborder.xml" value="0.22552083333333334" />
-        <entry key="..\:/kuliah semester 5/APP ANDROID/Workout/WorkoutKuy/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/kuliah semester 5/APP ANDROID/Workout/WorkoutKuy/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/kuliah semester 5/APP ANDROID/Workout/WorkoutKuy/app/src/main/res/layout/activity_profile.xml" value="0.22" />
       </map>
     </option>
   </component>
