@@ -25,8 +25,7 @@
         android:padding="10dp"
         android:orientation="vertical"
         android:background="@drawable/customborder"
-        android:backgroundTint=""
-        >
+        android:backgroundTint="#334756">
 
         <TextView
             android:layout_width="match_parent"
@@ -68,14 +67,17 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:background="@drawable/customborder"/>
+            android:background="@color/darkBlue"
+            android:foreground="@drawable/customborder"/>
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>
