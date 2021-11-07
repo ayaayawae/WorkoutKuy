@@ -3,18 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< Updated upstream
         <entry key="..\:/Users/edric/Desktop/smt5/MobileApp/GIT/WorkoutKuy/app/src/main/res/layout/activity_profile.xml" value="0.18" />
         <entry key="..\:/Users/edric/Desktop/smt5/MobileApp/GIT/WorkoutKuy/app/src/main/res/layout/history_page.xml" value="0.22" />
-=======
-        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/drawable-v24/customborder2.xml" value="0.2796296296296296" />
-        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/drawable/customborder.xml" value="0.2948717948717949" />
-        <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/font/abelfont.xml" value="0.29907407407407405" />
->>>>>>> Stashed changes
         <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/kambingdesa/AndroidStudioProjects_LEC/TugasAkhir/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.30364583333333334" />
+        <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/drawable/customborder.xml" value="0.30364583333333334" />
         <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/activity_login.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/activity_profile.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/umarh/Documents/GitHub/WorkoutKuy/app/src/main/res/layout/history_page.xml" value="0.21739130434782608" />
