@@ -3,6 +3,7 @@ package id.ac.umn.workoutkuy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
 

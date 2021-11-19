@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_width="350dp"
-                android:layout_height="400dp"
+                android:layout_height="500dp"
                 android:padding="1dp"
                 android:orientation="vertical"
                 android:background="@drawable/customborder"
@@ -45,7 +45,7 @@
 
                     <LinearLayout
                         android:layout_width="350dp"
-                        android:layout_height="400dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:background="@color/darkBlue2"
                         android:orientation="vertical"
@@ -129,6 +129,18 @@
                             android:layout_marginTop="16dp"
                             android:backgroundTint="@color/orange"
                             android:text="LOGIN"
+                            android:textColor="@color/black"
+                            android:textFontWeight="400" />
+
+                        <Button
+                            android:id="@+id/google_signin"
+                            style="@style/CustomFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="@color/orange"
+                            android:text="LOGIN by Google"
                             android:textColor="@color/black"
                             android:textFontWeight="400" />
 
