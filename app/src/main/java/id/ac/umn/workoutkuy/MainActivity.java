@@ -25,14 +25,18 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_main);
-
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         FrameLayout nav_host = findViewById(R.id.fragment_container);
+        mAuth = FirebaseAuth.getInstance();
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(nav_host.getId(), new HomeFragment()).commit();
-
-        Log.d("MainActivity","tesLogin berhasil");
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(nav_host.getId(), new HomeFragment()).commit();
+        }
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
@@ -51,15 +55,5 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
-    }
-
-    public void setPlan(View view) {
-//        Log.d("MainActivity", "SiNI");
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null) {
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-        }
     }
 }

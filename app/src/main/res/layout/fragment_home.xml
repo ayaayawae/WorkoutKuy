@@ -137,7 +137,6 @@
                 android:backgroundTint="#F0A500"
                 android:text="Set Plan"
                 android:textColor="@color/black"
-                android:onClick="setPlan"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
