@@ -69,57 +69,63 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="265dp"
+                android:layout_height="270dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp">
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginRight="10dp">
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/male"
                         android:layout_width="160dp"
                         android:layout_height="137dp"
-                        app:cardCornerRadius="10dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="20dp">
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="10dp">
+
                         <ImageView
                             android:id="@+id/planGenderImg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/image4"/>
+                            android:src="@drawable/image4" />
                     </androidx.cardview.widget.CardView>
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/intensityBtn"
                         android:layout_width="160dp"
-                        android:layout_height="100dp"
-                        app:cardCornerRadius="10dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:background="@drawable/customborder"
                         android:backgroundTint="#334756"
-                        android:background="@drawable/customborder">
+                        app:cardCornerRadius="10dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical">
+
                             <TextView
+                                style="@style/CustomFont"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Intensity"
                                 android:textColor="#F0A500"
-                                android:textSize="30dp"
-                                style="@style/CustomFont"/>
+                                android:textSize="30dp" />
+
                             <TextView
                                 android:id="@+id/intensity"
+                                style="@style/CustomFont"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Beginner"
                                 android:textColor="#F0A500"
                                 android:textSize="22dp"
-                                android:textStyle="bold"
-                                style="@style/CustomFont"/>
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -130,7 +136,7 @@
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="160dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="10dp"
                         android:layout_gravity="center"
