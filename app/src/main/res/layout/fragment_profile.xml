@@ -5,26 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#082032">
+    android:background="#082032"
+    android:gravity="center">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/pp"
             app:civ_border_color="#FFFF"
             app:civ_border_width="2dp" />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
             <TextView
                 android:id="@+id/profile_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:text="John Doe"
                 android:textSize="20dp"
@@ -59,7 +62,6 @@
                 android:background="@drawable/customborder"
                 android:padding="10dp">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/cup"

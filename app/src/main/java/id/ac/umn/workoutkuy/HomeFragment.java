@@ -17,6 +17,10 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +30,7 @@ public class HomeFragment extends Fragment {
     private CardView intensityBtn;
     private TextView intensity;
     private int intensityLvl, genderPlan = 0;
+    private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -43,6 +48,11 @@ public class HomeFragment extends Fragment {
         intensityBtn = view.findViewById(R.id.intensityBtn);
         intensity = view.findViewById(R.id.intensity);
         setPlanBtn = view.findViewById(R.id.setPlan_button);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
         male.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +96,10 @@ public class HomeFragment extends Fragment {
 
                 }else{
                     rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                    reference = rootNode.getReference("users").child("username");
+                    reference = rootNode.getReference("users").child(signInAccount.getId());
 
-                    reference.child("name").setValue("edrick");
                     reference.child("plan").child("gender").setValue(genderPlan);
                     reference.child("plan").child("intensity").setValue(intensityLvl);
-                    reference.child("url_picture").setValue("url");
                     Toast.makeText(getContext(),"Plan berhasil di-set, semangat!",Toast.LENGTH_LONG).show();
                 }
             }
