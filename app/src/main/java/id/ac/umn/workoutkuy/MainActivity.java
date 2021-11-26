@@ -1,5 +1,6 @@
 package id.ac.umn.workoutkuy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -17,8 +18,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -47,11 +51,21 @@ public class MainActivity extends AppCompatActivity {
             rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
             reference = rootNode.getReference("users").child(signInAccount.getId());
 
-            if(reference == null) {
-                reference.child("email").setValue(signInAccount.getEmail());
-                reference.child("name").setValue(signInAccount.getDisplayName());
-                reference.child("url_picture").setValue(signInAccount.getPhotoUrl().toString());
-            }
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(!snapshot.exists()){
+                        reference.child("email").setValue(signInAccount.getEmail());
+                        reference.child("name").setValue(signInAccount.getDisplayName());
+                        reference.child("url_picture").setValue(signInAccount.getPhotoUrl().toString());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
             getSupportFragmentManager().beginTransaction()
                     .replace(nav_host.getId(), new HomeFragment()).commit();
