@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
                     reference.child("plan").addValueEventListener(new ValueEventListener(){
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            Intent intent = new Intent(getActivity(), LoginActivity.class);
                             startActivity(intent);
                         }
 

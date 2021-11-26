@@ -86,11 +86,10 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="20dp">
                         <ImageView
-                            android:id="@+id/maleImg"
+                            android:id="@+id/planGenderImg"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/image4"
-                            android:foreground="@color/transparentBlack"/>
+                            android:src="@drawable/image4"/>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
                         android:id="@+id/intensityBtn"

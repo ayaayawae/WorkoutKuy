@@ -80,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        reference = rootNode.getReference("users").child(signInAccount.getId()).child("plan");
-                        reference.addValueEventListener(new ValueEventListener() {
+                        reference.child("plan").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 checkPlan = !snapshot.exists() ?  false : true;
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-                        selectedFragment = !checkPlan ? new HomeFragment() : new HomeFragmentSet();
+                        selectedFragment = checkPlan ? new HomeFragmentSet() : new HomeFragment() ;
 
                         break;
                     case R.id.nav_fitness:

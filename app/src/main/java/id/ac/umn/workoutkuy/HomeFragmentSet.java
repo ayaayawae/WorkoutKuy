@@ -19,15 +19,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragmentSet extends Fragment {
     private Button setPlanBtn;
-    private ImageView male, female;
+    private ImageView planGenderImg;
     private CardView intensityBtn;
     private TextView intensity;
-    private int intensityLvl, genderPlan = 0;
+    public int intensityLvl, genderPlan = 0;
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -41,7 +44,38 @@ public class HomeFragmentSet extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        planGenderImg = (ImageView) view.findViewById(R.id.planGenderImg);
+        intensity = view.findViewById(R.id.intensity);
 
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
+
+        rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        reference = rootNode.getReference("users").child(signInAccount.getId());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.child("plan").child("gender").getValue(Integer.class) == 0) {
+                    planGenderImg.setImageResource(R.drawable.image4);
+                } else {
+                    planGenderImg.setImageResource(R.drawable.image5);
+                }
+
+                intensityLvl = snapshot.child("plan").child("intensity").getValue(Integer.class);
+                if(intensityLvl == 0) {
+                    intensity.setText("Beginner");
+                } else if(intensityLvl == 1) {
+                    intensity.setText("Intermediate");
+                } else if(intensityLvl == 2) {
+                    intensity.setText("Advanced");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 }

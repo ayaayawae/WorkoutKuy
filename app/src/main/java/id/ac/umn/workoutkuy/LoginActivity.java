@@ -49,6 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         googleSignIn = findViewById(R.id.google_signin);
         mAuth = FirebaseAuth.getInstance();
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user != null) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
+
         createRequest();
 
         googleSignIn.setOnClickListener(new View.OnClickListener() {
