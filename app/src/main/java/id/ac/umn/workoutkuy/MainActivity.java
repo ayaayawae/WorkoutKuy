@@ -31,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if(user == null) {
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-        } else {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(nav_host.getId(), new HomeFragment()).commit();
-        }
+//        if(user == null) {
+//            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//            startActivity(intent);
+//        } else {
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(nav_host.getId(), new HomeFragment()).commit();
+//        }
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
-            if(user == null) {
+            if(user != null) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             } else {
