@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    public boolean checkPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,21 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        selectedFragment = new HomeFragment(); break;
+                        reference = rootNode.getReference("users").child(signInAccount.getId()).child("plan");
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                checkPlan = !snapshot.exists() ?  false : true;
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        selectedFragment = !checkPlan ? new HomeFragment() : new HomeFragmentSet();
+
+                        break;
                     case R.id.nav_fitness:
                         selectedFragment = new FitnessFragment(); break;
                     case R.id.nav_profile:
