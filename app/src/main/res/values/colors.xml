@@ -11,4 +11,5 @@
     <color name="darkBlue">#FF082032</color>
     <color name="darkBlue2">#FF334756</color>
     <color name="transparentWhite">#6B82F4</color>
+    <color name="transparentBlack">#80000000</color>
 </resources>

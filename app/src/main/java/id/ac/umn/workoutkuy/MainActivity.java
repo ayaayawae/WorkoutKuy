@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,19 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
-
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    selectedFragment = new HomeFragment(); break;
-                case R.id.nav_fitness:
-                    selectedFragment = new FitnessFragment(); break;
-                case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment(); break;
+            if(user == null) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            } else {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        selectedFragment = new HomeFragment(); break;
+                    case R.id.nav_fitness:
+                        selectedFragment = new FitnessFragment(); break;
+                    case R.id.nav_profile:
+                        selectedFragment = new ProfileFragment(); break;
+                }
+                getSupportFragmentManager().beginTransaction()
+                        .replace(nav_host.getId(), selectedFragment).commit();
             }
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(nav_host.getId(), selectedFragment).commit();
-
             return true;
         });
     }

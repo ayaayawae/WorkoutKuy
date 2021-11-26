@@ -79,9 +79,11 @@
                     app:cardCornerRadius="10dp"
                     android:layout_margin="15dp">
                     <ImageView
+                        android:id="@+id/maleImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/image4"/>
+                        android:src="@drawable/image4"
+                        android:foreground="@color/transparentBlack"/>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -92,14 +94,17 @@
                     android:layout_margin="15dp"
                     >
                     <ImageView
+                        android:id="@+id/femaleImg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/image5"/>
+                        android:src="@drawable/image5"
+                        android:foreground="@color/transparentBlack"/>
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/intensityBtn"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
                 app:cardCornerRadius="10dp"

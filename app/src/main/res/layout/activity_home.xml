@@ -77,7 +77,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/image4"/>
+                    android:src="@drawable/image4"
+                    android:foreground="@color/transparentBlack"/>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -90,7 +91,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/image5"/>
+                    android:src="@drawable/image5"
+                    android:foreground="@color/transparentBlack"/>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
