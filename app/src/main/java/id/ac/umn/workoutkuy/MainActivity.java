@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         reference.child("plan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println(snapshot);
                 getSupportFragmentManager().beginTransaction()
                     .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commit();
             }

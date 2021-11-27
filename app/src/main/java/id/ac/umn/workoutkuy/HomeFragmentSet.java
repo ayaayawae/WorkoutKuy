@@ -55,19 +55,21 @@ public class HomeFragmentSet extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("plan").child("gender").getValue(Integer.class) == 1) {
-                    planGenderImg.setImageResource(R.drawable.image4);
-                } else {
-                    planGenderImg.setImageResource(R.drawable.image5);
-                }
-
-                intensityLvl = snapshot.child("plan").child("intensity").getValue(Integer.class);
-                if(intensityLvl == 0) {
-                    intensity.setText("Beginner");
-                } else if(intensityLvl == 1) {
-                    intensity.setText("Intermediate");
-                } else if(intensityLvl == 2) {
-                    intensity.setText("Advanced");
+                if(snapshot.child("plan").child("gender").exists() && snapshot.child("plan").child("intensity").exists()){
+                    System.out.println(snapshot);
+                    if(snapshot.child("plan").child("gender").getValue(Integer.class) == 1) {
+                        planGenderImg.setImageResource(R.drawable.image4);
+                    } else {
+                        planGenderImg.setImageResource(R.drawable.image5);
+                    }
+                    intensityLvl = snapshot.child("plan").child("intensity").getValue(Integer.class);
+                    if(intensityLvl == 0) {
+                        intensity.setText("Beginner");
+                    } else if(intensityLvl == 1) {
+                        intensity.setText("Intermediate");
+                    } else if(intensityLvl == 2) {
+                        intensity.setText("Advanced");
+                    }
                 }
             }
 

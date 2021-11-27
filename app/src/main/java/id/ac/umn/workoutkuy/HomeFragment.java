@@ -105,19 +105,6 @@ public class HomeFragment extends Fragment {
                     reference.child("plan").child("gender").setValue(genderPlan);
                     reference.child("plan").child("intensity").setValue(intensityLvl);
                     Toast.makeText(getContext(),"Plan berhasil di-set, semangat!",Toast.LENGTH_LONG).show();
-
-                    reference.child("plan").addValueEventListener(new ValueEventListener(){
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            Intent intent = new Intent(getActivity(), LoginActivity.class);
-//                            startActivity(intent);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 }
             }
         });
