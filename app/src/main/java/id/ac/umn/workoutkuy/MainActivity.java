@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(nav_host.getId(), new HomeFragment()).commit();
+            setCheckPlan(signInAccount.getId(),nav_host.getId());
         }
 
         bottomNav.setOnItemSelectedListener(item -> {
@@ -104,5 +102,27 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+//    @Override
+    protected void setCheckPlan(String id, int navHostId) {
+        rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        reference = rootNode.getReference("users").child(id);
+        reference.child("plan").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                System.out.println(snapshot);
+                getSupportFragmentManager().beginTransaction()
+                    .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commit();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//
+
     }
 }

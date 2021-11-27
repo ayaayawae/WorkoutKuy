@@ -55,7 +55,7 @@ public class HomeFragmentSet extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("plan").child("gender").getValue(Integer.class) == 0) {
+                if(snapshot.child("plan").child("gender").getValue(Integer.class) == 1) {
                     planGenderImg.setImageResource(R.drawable.image4);
                 } else {
                     planGenderImg.setImageResource(R.drawable.image5);
