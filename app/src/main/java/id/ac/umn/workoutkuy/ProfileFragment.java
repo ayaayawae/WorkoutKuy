@@ -84,7 +84,6 @@ public class ProfileFragment extends Fragment {
         } else if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-
             //converting bitmap to uri
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -116,7 +115,6 @@ public class ProfileFragment extends Fragment {
                                     reference.child("url_picture").setValue(uri.toString());
                                 }
                             });
-//                                System.out.println(fileReference.getDownloadUrl());
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

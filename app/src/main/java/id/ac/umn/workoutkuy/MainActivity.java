@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         selectedFragment = checkPlan ? new HomeFragmentSet() : new HomeFragment() ;break;
                     case R.id.nav_fitness:
-                        selectedFragment = new FitnessFragment(); break;
+                        selectedFragment = checkPlan ? new FitnessFragment() : new FitnessFragmentNotSet(); break;
                     case R.id.nav_profile:
                         selectedFragment = new ProfileFragment(); break;
                 }
