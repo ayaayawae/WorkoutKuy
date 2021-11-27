@@ -53,6 +53,7 @@ public class ProfileFragment extends Fragment {
     private CircleImageView profileImg;
     private ImageView editIcon;
     private Uri mImageUri;
+    public String url_picture;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     StorageReference storageReference;
@@ -70,10 +71,8 @@ public class ProfileFragment extends Fragment {
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             if(mImageUri != null) {
-                Picasso.get().load(mImageUri)
-                        .resize(200, 200)
-                        .centerCrop()
-                        .into(profileImg);
+
+                Toast.makeText(getContext(), "Choto Minute", Toast.LENGTH_LONG).show();
                 StorageReference fileReference = storageReference.child(System.currentTimeMillis()
                         + "." + getFileExtension(mImageUri));
 
@@ -82,7 +81,17 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
+                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        Uri downloadUrl = uri;
 
+                                        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
+                                        reference = rootNode.getReference("users").child(signInAccount.getId());
+                                        reference.child("url_picture").setValue(uri.toString());
+                                    }
+                                });
+                                System.out.println(fileReference.getDownloadUrl());
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -124,6 +133,11 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     profileName.setText(snapshot.child("name").getValue(String.class));
+                    System.out.println(signInAccount.getPhotoUrl());
+                    Picasso.get().load(snapshot.child("url_picture").getValue(String.class))
+                            .resize(200, 200)
+                            .centerCrop()
+                            .into(profileImg);
                 }
 
                 @Override
@@ -133,10 +147,6 @@ public class ProfileFragment extends Fragment {
             });
 
 
-            Picasso.get().load(signInAccount.getPhotoUrl())
-                    .resize(200, 200)
-                    .centerCrop()
-                    .into(profileImg);
         }
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
