@@ -56,7 +56,6 @@ public class HomeFragmentSet extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("plan").child("gender").exists() && snapshot.child("plan").child("intensity").exists()){
-                    System.out.println(snapshot);
                     if(snapshot.child("plan").child("gender").getValue(Integer.class) == 1) {
                         planGenderImg.setImageResource(R.drawable.image4);
                     } else {
