@@ -2,11 +2,15 @@ package id.ac.umn.workoutkuy;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -43,17 +48,22 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 2;
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 3;
 
     private TextView profileName;
     private Button logoutBtn;
     private CircleImageView profileImg;
     private ImageView editIcon;
     private Uri mImageUri;
-    public String url_picture;
+    public String url_picture, path;
+
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     StorageReference storageReference;
@@ -70,46 +80,59 @@ public class ProfileFragment extends Fragment {
 
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            if(mImageUri != null) {
+            insertDataToDatabase(mImageUri);
+        } else if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-                Toast.makeText(getContext(), "Choto Minute", Toast.LENGTH_LONG).show();
-                StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                        + "." + getFileExtension(mImageUri));
+            //converting bitmap to uri
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), imageBitmap, "Title", null);
+            mImageUri = Uri.parse(path);
 
-                fileReference.putFile(mImageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
-                                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        Uri downloadUrl = uri;
+            insertDataToDatabase(mImageUri);
+        }
+    }
 
-                                        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
-                                        reference = rootNode.getReference("users").child(signInAccount.getId());
-                                        reference.child("url_picture").setValue(uri.toString());
-                                    }
-                                });
-                                System.out.println(fileReference.getDownloadUrl());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+    private void insertDataToDatabase(Uri mImageUris) {
+        if(mImageUris != null) {
+            Toast.makeText(getContext(), "Choto Minute", Toast.LENGTH_LONG).show();
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis()
+                    + "." + getFileExtension(mImageUris));
 
-                            }
-                        });
-            } else {
-                Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
-            }
+            fileReference.putFile(mImageUris)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Uri downloadUrl = uri;
 
+                                    GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
+                                    reference = rootNode.getReference("users").child(signInAccount.getId());
+                                    reference.child("url_picture").setValue(uri.toString());
+                                }
+                            });
+//                                System.out.println(fileReference.getDownloadUrl());
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                        }
+                    });
+        } else {
+            Toast.makeText(getContext(), "No File Selected", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -122,6 +145,7 @@ public class ProfileFragment extends Fragment {
         editIcon = (ImageView) view.findViewById(R.id.editIcon);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder alert2 = new AlertDialog.Builder(getContext());
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
         if(signInAccount != null) {
@@ -133,7 +157,7 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     profileName.setText(snapshot.child("name").getValue(String.class));
-                    System.out.println(signInAccount.getPhotoUrl());
+//                    System.out.println(signInAccount.getPhotoUrl());
                     Picasso.get().load(snapshot.child("url_picture").getValue(String.class))
                             .resize(200, 200)
                             .centerCrop()
@@ -145,8 +169,6 @@ public class ProfileFragment extends Fragment {
 
                 }
             });
-
-
         }
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -192,10 +214,33 @@ public class ProfileFragment extends Fragment {
         profileImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                alert2.setTitle("Choose Image");
+
+                alert2.setPositiveButton("Camera", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        if(ContextCompat.checkSelfPermission(getContext(),
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                    MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                        } else {
+                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            if(takePictureIntent.resolveActivity(getContext().getPackageManager()) != null) {
+                                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                            }
+                        }
+                    }
+                });
+
+                alert2.setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent();
+                        intent.setType("image/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                    }
+                });
+
+                alert2.show();
             }
         });
     }
