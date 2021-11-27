@@ -78,20 +78,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        reference.child("plan").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                checkPlan = !snapshot.exists() ?  false : true;
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-                        selectedFragment = checkPlan ? new HomeFragmentSet() : new HomeFragment() ;
-
-                        break;
+                        selectedFragment = checkPlan ? new HomeFragmentSet() : new HomeFragment() ;break;
                     case R.id.nav_fitness:
                         selectedFragment = new FitnessFragment(); break;
                     case R.id.nav_profile:
@@ -111,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         reference.child("plan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                checkPlan = !snapshot.exists() ?  false : true;
                 getSupportFragmentManager().beginTransaction()
                     .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commit();
             }
