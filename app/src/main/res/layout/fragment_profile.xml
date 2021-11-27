@@ -29,16 +29,17 @@
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="John Doe"
+                android:text=" "
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textColor="@color/white"
                 style="@style/CustomFont"/>
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/edit"
+                android:id="@+id/editIcon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/editing"
                 android:layout_marginLeft="5dp"/>
         </LinearLayout>
 
