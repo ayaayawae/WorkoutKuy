@@ -112,7 +112,7 @@ public class FitnessFragment extends Fragment {
                         }
                     }else{
                         if(snapshot.child("intensity").getValue(int.class) == 0){
-                            arr.add(new DataExercise("Squats",                          2,0,10,2,0, String.valueOf(R.drawable.squat), String.valueOf(R.drawable.squats_gif)));
+                            arr.add(new DataExercise("Squats",                          2,0,10,2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
                             arr.add(new DataExercise("Incline Push-Ups",                2,0,8, 2,0, String.valueOf(R.drawable.incline_push_ups), String.valueOf(R.drawable.incline_push_ups_gif)));
                             arr.add(new DataExercise("Mountain Climber",                2,0,0, 2,20, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
                             arr.add(new DataExercise("Russian Twist",                   2,0,10,2,0, String.valueOf(R.drawable.russian_twist), String.valueOf(R.drawable.russian_twist_gif)));
