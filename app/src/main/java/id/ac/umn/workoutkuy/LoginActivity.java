@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         etPass = findViewById(R.id.etPassword);
-        eyeIcon = findViewById(R.id.show_pass_btn);
         googleSignIn = findViewById(R.id.google_signin);
         mAuth = FirebaseAuth.getInstance();
 
