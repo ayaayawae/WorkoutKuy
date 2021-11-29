@@ -1,8 +1,9 @@
 package id.ac.umn.workoutkuy;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DataExercise {
+public class DataExercise implements Serializable {
     String taskName;
     int gender;
     int intensity;

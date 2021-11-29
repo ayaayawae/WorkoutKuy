@@ -36,7 +36,6 @@ public class FitnessAdapter extends ArrayAdapter<DataExercise> {
         }else{
             taskDetail.setText(getItem(position).getReps() + " reps x " + getItem(position).sets + " sets");
         }
-
         return convertView;
     }
 }

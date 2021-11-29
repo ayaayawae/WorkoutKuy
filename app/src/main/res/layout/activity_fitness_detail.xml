@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FitnessDetail"
+    android:orientation="vertical"
+    android:background="@color/darkBlue"
+    android:gravity="center_horizontal"
+    android:paddingTop="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step-n"
+        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/taskNum"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama gerakan"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/taskName"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/taskDetail"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="45sp"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/taskTime"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F0A500"
+        android:text="Start"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/taskStart"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/taskBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginRight="1dp"
+                android:backgroundTint="#F0A500"
+                android:padding="5sp"
+                android:text="Back"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/taskNext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="1dp"
+                android:backgroundTint="#F0A500"
+                android:padding="5sp"
+                android:text="Next"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </GridLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

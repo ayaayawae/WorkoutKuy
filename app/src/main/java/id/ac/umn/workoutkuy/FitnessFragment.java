@@ -1,14 +1,17 @@
 package id.ac.umn.workoutkuy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -143,6 +146,19 @@ public class FitnessFragment extends Fragment {
                 }
                 FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.row, arr);
                 listView.setAdapter(fitnessAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+//                        Toast.makeText(getContext(),position,Toast.LENGTH_LONG);
+                        Intent detailFitness = new Intent(getActivity(), FitnessDetail.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("data", arr);
+                        bundle.putSerializable("num", String.valueOf(position));
+                        detailFitness.putExtra("extra", bundle);
+                        startActivity(detailFitness);
+                    }
+                });
             }
 
             @Override
