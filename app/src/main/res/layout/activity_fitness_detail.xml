@@ -60,7 +60,8 @@
         android:text="Start"
         android:textColor="@color/black"
         android:layout_marginBottom="10dp"
-        android:id="@+id/taskStart"/>
+        android:id="@+id/taskStart"
+        android:onClick="startTimer"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

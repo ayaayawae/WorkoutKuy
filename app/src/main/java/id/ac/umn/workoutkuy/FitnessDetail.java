@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -65,9 +66,29 @@ public class FitnessDetail extends AppCompatActivity {
             taskStart.setVisibility(View.GONE);
         }else{
             taskDetail.setText(data.get(num).getSets() + " sets");
-            taskTime.setText("00:"+data.get(num).getTime());
+            taskTime.setText(data.get(num).getTime()+" seconds");
             taskStart.setEnabled(true);
             taskStart.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void startTimer(View view){
+
+        new CountDownTimer(data.get(num).getTime()*1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                taskStart.setEnabled(false);
+                taskBack.setEnabled(false);
+                taskNext.setEnabled(false);
+                taskTime.setText(millisUntilFinished / 1000 + " seconds");
+            }
+
+            public void onFinish() {
+                taskStart.setEnabled(true);
+                taskBack.setEnabled(true);
+                taskNext.setEnabled(true);
+                taskTime.setText("done!");
+            }
+        }.start();
+
     }
 }
