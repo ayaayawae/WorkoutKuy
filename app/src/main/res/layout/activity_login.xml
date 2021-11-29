@@ -42,12 +42,12 @@
 
                 <LinearLayout
                     android:layout_width="350dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="320dp"
                     android:layout_gravity="center"
                     android:background="@color/darkBlue2"
+                    android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:padding="5dp"
-                    android:gravity="center_vertical">
+                    android:padding="5dp">
 
                     <TextView
                         style="@style/CustomFont"
@@ -63,14 +63,16 @@
                     <Button
                         android:id="@+id/google_signin"
                         style="@style/CustomFont"
+                        android:drawableLeft="@drawable/google_logo3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
-                        android:backgroundTint="@color/orange"
+                        android:backgroundTint="@color/white"
                         android:text="LOGIN by Google"
                         android:textColor="@color/black"
-                        android:textFontWeight="400" />
+                        android:textFontWeight="400"
+                        />
 
                 </LinearLayout>
 
