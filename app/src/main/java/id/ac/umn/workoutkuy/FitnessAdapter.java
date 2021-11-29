@@ -29,7 +29,13 @@ public class FitnessAdapter extends ArrayAdapter<DataExercise> {
         convertView = layoutInflater.inflate(mResource, parent,false );
         TextView taskName = convertView.findViewById(R.id.taskName);
         TextView taskDetail = convertView.findViewById(R.id.taskDetail);
+
         taskName.setText(getItem(position).getTaskName());
+        if(getItem(position).getReps() == 0){
+            taskDetail.setText(getItem(position).getTime() + " seconds x " + getItem(position).sets + " sets");
+        }else{
+            taskDetail.setText(getItem(position).getReps() + " reps x " + getItem(position).sets + " sets");
+        }
 
         return convertView;
     }
