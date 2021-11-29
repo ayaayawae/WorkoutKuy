@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class FitnessDetail extends AppCompatActivity {
     public int num;
     ArrayList<DataExercise> data = new ArrayList<>();
     TextView taskNum, taskName, taskDetail, taskTime;
     Button taskNext, taskBack, taskStart;
+    GifImageView taskGIF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class FitnessDetail extends AppCompatActivity {
         taskBack = findViewById(R.id.taskBack);
         taskNext = findViewById(R.id.taskNext);
         taskStart = findViewById(R.id.taskStart);
+        taskGIF = findViewById(R.id.taskGIF);
         setContent();
 
         taskBack.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,7 @@ public class FitnessDetail extends AppCompatActivity {
     public void setContent(){
         taskNum.setText("Step " + (num+1));
         taskName.setText(data.get(num).getTaskName());
+        taskGIF.setImageResource(Integer.parseInt(data.get(num).getPhotoGif()));
         if(data.get(num).getTime() == 0){
             taskDetail.setText(data.get(num).getReps() + " reps x " + data.get(num).getSets() + " sets");
             taskTime.setText("");

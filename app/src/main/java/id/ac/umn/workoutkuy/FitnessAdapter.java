@@ -1,10 +1,12 @@
 package id.ac.umn.workoutkuy;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class FitnessAdapter extends ArrayAdapter<DataExercise> {
     private Context mContext;
     private int mResource;
+
     public FitnessAdapter(@NonNull Context context, int resource, @NonNull ArrayList<DataExercise> objects) {
         super(context, resource, objects);
         this.mContext = context;
@@ -29,7 +32,10 @@ public class FitnessAdapter extends ArrayAdapter<DataExercise> {
         convertView = layoutInflater.inflate(mResource, parent,false );
         TextView taskName = convertView.findViewById(R.id.taskName);
         TextView taskDetail = convertView.findViewById(R.id.taskDetail);
+        ImageView taskPhoto = (ImageView) convertView.findViewById(R.id.taskPhoto);
 
+
+        taskPhoto.setImageResource(Integer.parseInt(getItem(position).getPhoto()));
         taskName.setText(getItem(position).getTaskName());
         if(getItem(position).getReps() == 0){
             taskDetail.setText(getItem(position).getTime() + " seconds x " + getItem(position).sets + " sets");

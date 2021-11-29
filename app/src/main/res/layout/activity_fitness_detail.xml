@@ -19,14 +19,16 @@
         android:layout_marginBottom="20dp"
         android:id="@+id/taskNum"/>
     <androidx.cardview.widget.CardView
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:cardCornerRadius="10dp"
         android:layout_marginBottom="20dp">
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/taskGIF"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+            />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -48,7 +50,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="45sp"
+        android:textSize="24sp"
         android:text="00:00"
         android:textColor="@color/white"
         android:layout_marginBottom="10dp"
