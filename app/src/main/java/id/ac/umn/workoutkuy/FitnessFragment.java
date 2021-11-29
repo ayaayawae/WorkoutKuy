@@ -26,8 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -72,7 +70,7 @@ public class FitnessFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("gender").getValue(int.class) == 1){
                     if(snapshot.child("intensity").getValue(int.class) == 0){
-                        arr.add(new DataExercise("Mountain Climber",    1,0,0,  2,20));
+                        arr.add(new DataExercise("Mountain Climber",    1,0,0,  2,20, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
                         arr.add(new DataExercise("Squats",              1,0,10, 2,0));
                         arr.add(new DataExercise("High Stepping",       1,0,0,  2,20));
                         arr.add(new DataExercise("Push-Ups",            1,0,8,  2,0));

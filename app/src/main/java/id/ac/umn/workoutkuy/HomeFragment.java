@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragment extends Fragment {
-    private Button setPlanBtn;
+    private Button setPlanBtn, resetPlanBtn;
     private ImageView male, female;
     private CardView intensityBtn;
     private TextView intensity;
@@ -52,11 +52,14 @@ public class HomeFragment extends Fragment {
         intensityBtn = view.findViewById(R.id.intensityBtn);
         intensity = view.findViewById(R.id.intensity);
         setPlanBtn = view.findViewById(R.id.setPlan_button);
+
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
+
+        rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
         male.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,9 +100,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 if(genderPlan == 0){
                     Toast.makeText(getContext(),"Harap pilih gender!",Toast.LENGTH_LONG).show();
-
                 }else{
-                    rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
                     reference = rootNode.getReference("users").child(signInAccount.getId());
 
                     reference.child("plan").child("gender").setValue(genderPlan);
@@ -108,6 +109,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+
     }
 
     public static void pause(double seconds)

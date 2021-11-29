@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeFragmentSet extends Fragment {
-    private Button setPlanBtn;
+    private Button setPlanBtn, resetPlanBtn;
     private ImageView planGenderImg;
     private CardView intensityBtn;
     private TextView intensity;
@@ -46,6 +46,7 @@ public class HomeFragmentSet extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         planGenderImg = (ImageView) view.findViewById(R.id.planGenderImg);
         intensity = view.findViewById(R.id.intensity);
+        resetPlanBtn = view.findViewById(R.id.resetPlan);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
@@ -75,6 +76,15 @@ public class HomeFragmentSet extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        resetPlanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Sini");
+                reference = rootNode.getReference("users").child(signInAccount.getId());
+                reference.child("plan").removeValue();
             }
         });
 
