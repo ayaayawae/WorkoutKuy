@@ -8,150 +8,77 @@
     android:background="@color/darkBlue"
     tools:context=".LoginActivity">
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:text="WorkOutKuy"
+            android:textSize="48sp"
+            android:textFontWeight="600"
+            style="@style/CustomFont"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_gravity="center"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:padding="1dp"
+            android:orientation="vertical"
+            android:background="@drawable/customborder"
+            >
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:text="WorkOutKuy"
-                android:textSize="48sp"
-                android:textFontWeight="600"
-                style="@style/CustomFont"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="10dp">
 
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_width="350dp"
-                android:layout_height="500dp"
-                android:padding="1dp"
-                android:orientation="vertical"
-                android:background="@drawable/customborder"
-                >
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="350dp"
                     android:layout_height="match_parent"
-                    app:cardCornerRadius="10dp">
+                    android:layout_gravity="center"
+                    android:background="@color/darkBlue2"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:gravity="center_vertical">
 
-                    <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="match_parent"
+                    <TextView
+                        style="@style/CustomFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Login"
+                        android:textAlignment="center"
+                        android:textFontWeight="600"
+                        android:textSize="36sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/google_signin"
+                        style="@style/CustomFont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="@color/darkBlue2"
-                        android:orientation="vertical"
-                        android:padding="5dp">
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/orange"
+                        android:text="LOGIN by Google"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400" />
 
-                        <TextView
-                            style="@style/CustomFont"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:text="Login"
-                            android:textAlignment="center"
-                            android:textFontWeight="600"
-                            android:textSize="36sp"
-                            android:textStyle="bold" />
+                </LinearLayout>
 
-                        <TextView
-                            style="@style/CustomFont"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="20dp"
-                            android:text="Email"
-                            android:textAlignment="textStart"
-                            android:textFontWeight="600" />
-
-                        <EditText
-                            android:id="@+id/etEmail"
-                            style="@style/CustomFont"
-                            android:layout_width="300dp"
-                            android:layout_height="48dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/customborder2"
-                            android:inputType="textEmailAddress"
-                            android:padding="8dp"
-                            android:textStyle="normal" />
-
-                        <TextView
-                            style="@style/CustomFont"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="20dp"
-                            android:text="Password"
-                            android:textAlignment="textStart"
-                            android:textFontWeight="600" />
-
-                        <LinearLayout
-                            android:layout_width="300dp"
-                            android:layout_height="48dp"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/etPassword"
-                                style="@style/CustomFont"
-                                android:layout_width="300dp"
-                                android:layout_height="48dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/customborder2"
-                                android:inputType="textPassword"
-                                android:padding="8dp"
-                                android:textStyle="normal" />
-
-                            <ImageView
-                                android:id="@+id/show_pass_btn"
-                                android:layout_width="50dp"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="-55dp"
-                                android:alpha="1"
-                                android:onClick="ShowHidePass"
-                                android:src="@drawable/hidden" />
-
-                        </LinearLayout>
-
-
-                        <Button
-                            style="@style/CustomFont"
-                            android:layout_width="130dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="@color/orange"
-                            android:text="LOGIN"
-                            android:textColor="@color/black"
-                            android:textFontWeight="400" />
-
-                        <Button
-                            android:id="@+id/google_signin"
-                            style="@style/CustomFont"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="@color/orange"
-                            android:text="LOGIN by Google"
-                            android:textColor="@color/black"
-                            android:textFontWeight="400" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
+
 
 </LinearLayout>
