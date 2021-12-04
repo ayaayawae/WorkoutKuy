@@ -39,6 +39,7 @@ public class FitnessFragment extends Fragment {
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    DatabaseReference reference2;
 
 
     @Nullable
@@ -65,86 +66,43 @@ public class FitnessFragment extends Fragment {
 
         rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
         reference = rootNode.getReference("users").child(id);
+        reference2 = rootNode.getReference("dataExercise");
+
         reference.child("plan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
-                    if(snapshot.child("gender").getValue(int.class) == 1){
-                        if(snapshot.child("intensity").getValue(int.class) == 0){
-                            arr.add(new DataExercise("Mountain Climber",    1,0,0,  2,20, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Squats",              1,0,10, 2,0,String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High Stepping",       1,0,0,  2,20, String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Push-Ups",            1,0,8,  2,0,String.valueOf(R.drawable.push_ups), String.valueOf(R.drawable.push_ups_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,0,10, 2,0,String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,0,0,  2,15 ,String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Squats",              1,0,10, 2,0 ,String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High-Stepping",       1,0,0,  2,20 ,String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Sit-Ups",             1,0,8,  2,0, String.valueOf(R.drawable.sit_ups), String.valueOf(R.drawable.sit_up_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,0,10, 2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,0,0,  2,15, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",       1,0,0,  1,25, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
-                        }else if(snapshot.child("intensity").getValue(int.class) == 1){
-                            arr.add(new DataExercise("Mountain Climber",    1,1,0,  2,30, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Squats",              1,1,16, 2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High Stepping",       1,1,0,  2,30, String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Push-Ups",            1,1,10, 2,0, String.valueOf(R.drawable.push_ups), String.valueOf(R.drawable.push_ups_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,1,16, 2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,1,0,  2,15, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Squats",              1,1,16, 2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High-Stepping",       1,1,0,  2,30, String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Sit-Ups",             1,1,10, 2,0, String.valueOf(R.drawable.sit_ups), String.valueOf(R.drawable.sit_up_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,1,16, 2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,1,0,  2,30, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",       1,1,0,  1,30, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
-                        }else{
-                            arr.add(new DataExercise("Mountain Climber",    1,2,0,  2,30, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Squats",              1,2,16, 2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High Stepping",       1,2,0,  2,30, String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Push-Ups",            1,2,15, 2,0, String.valueOf(R.drawable.push_ups), String.valueOf(R.drawable.push_ups_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,2,16, 2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,2,0,  2,30, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Squats",              1,2,16, 2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("High-Stepping",       1,2,0,  2,30, String.valueOf(R.drawable.high_stepping), String.valueOf(R.drawable.high_stepping_gif)));
-                            arr.add(new DataExercise("Sit-Ups",             1,2,15, 2,0, String.valueOf(R.drawable.sit_ups), String.valueOf(R.drawable.sit_up_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",    1,2,16, 2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Plank",               1,2,0,  2,40, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",       1,2,0,  1,30, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
+                    reference2
+                            .child(snapshot.child("gender").getValue(Integer.class) == 1 ? "male" : "female")
+                            .child(snapshot.child("intensity").getValue(Integer.class) == 0 ? "beginner"
+                                    : snapshot.child("intensity").getValue(Integer.class) == 1 ? "intermediate"
+                                    : "advanced")
+                            .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                for (DataSnapshot item : dataSnapshot.getChildren()){
+                                    System.out.println(item.getKey());
+                                    arr.add(new DataExercise(
+                                            item.child("taskName").getValue(String.class),
+                                            snapshot.child("gender").getValue(int.class),
+                                            snapshot.child("intensity").getValue(int.class),
+                                            item.child("reps").getValue(Integer.class),
+                                            item.child("sets").getValue(Integer.class),
+                                            item.child("time").getValue(Integer.class),
+                                            item.child("photo").getValue(String.class),
+                                            item.child("photoGif").getValue(String.class)));
+                                }
+                            }
+                            FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.row, arr);
+                            listView.setAdapter(fitnessAdapter);
                         }
-                    }else{
-                        if(snapshot.child("intensity").getValue(int.class) == 0){
-                            arr.add(new DataExercise("Squats",                          2,0,10,2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("Incline Push-Ups",                2,0,8, 2,0, String.valueOf(R.drawable.incline_push_ups), String.valueOf(R.drawable.incline_push_ups_gif)));
-                            arr.add(new DataExercise("Mountain Climber",                2,0,0, 2,20, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Russian Twist",                   2,0,10,2,0, String.valueOf(R.drawable.russian_twist), String.valueOf(R.drawable.russian_twist_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",                2,0,12,2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Backward Lunge-front kick left",  2,0,4, 2,0, String.valueOf(R.drawable.backward_lunge_with_front_kick_left), String.valueOf(R.drawable.backward_lunge_with_front_kick_left_gif)));
-                            arr.add(new DataExercise("Cat Cow Pose",                    2,0,0, 2,20, String.valueOf(R.drawable.cat_cow_pose), String.valueOf(R.drawable.cat_cow_pose_gif)));
-                            arr.add(new DataExercise("Plank",                           2,0,0, 2,20, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",                   2,0,0, 1,20, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
-                        }else if(snapshot.child("intensity").getValue(int.class) == 1){
-                            arr.add(new DataExercise("Squats",                          2,1,14,2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("Incline Push-Ups",                2,1,10,2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Mountain Climber",                2,1,0, 2,25, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Russian Twist",                   2,1,12,2,0, String.valueOf(R.drawable.russian_twist), String.valueOf(R.drawable.russian_twist_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",                2,1,14,2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Backward Lunge-front kick left",  2,1,5, 2,0, String.valueOf(R.drawable.backward_lunge_with_front_kick_left), String.valueOf(R.drawable.backward_lunge_with_front_kick_left_gif)));
-                            arr.add(new DataExercise("Cat Cow Pose",                    2,1,0, 2,25, String.valueOf(R.drawable.cat_cow_pose), String.valueOf(R.drawable.cat_cow_pose_gif)));
-                            arr.add(new DataExercise("Plank",                           2,1,0, 2,25, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",                   2,1,0, 1,25, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
-                        }else{
-                            arr.add(new DataExercise("Squats",                          2,1,18,2,0, String.valueOf(R.drawable.squats), String.valueOf(R.drawable.squats_gif)));
-                            arr.add(new DataExercise("Incline Push-Ups",                2,1,12,2,0, String.valueOf(R.drawable.incline_push_ups), String.valueOf(R.drawable.incline_push_ups_gif)));
-                            arr.add(new DataExercise("Mountain Climber",                2,1,0, 2,30, String.valueOf(R.drawable.mountain_climber), String.valueOf(R.drawable.mountain_climber_gif)));
-                            arr.add(new DataExercise("Russian Twist",                   2,1,16,2,0, String.valueOf(R.drawable.russian_twist), String.valueOf(R.drawable.russian_twist_gif)));
-                            arr.add(new DataExercise("Reverse Crunches",                2,1,16,2,0, String.valueOf(R.drawable.reverse_crunches), String.valueOf(R.drawable.reverse_crunch_gif)));
-                            arr.add(new DataExercise("Backward Lunge-front kick left",  2,1,6, 2,0, String.valueOf(R.drawable.backward_lunge_with_front_kick_left), String.valueOf(R.drawable.backward_lunge_with_front_kick_left_gif)));
-                            arr.add(new DataExercise("Cat Cow Pose",                    2,1,0, 2,30, String.valueOf(R.drawable.cat_cow_pose), String.valueOf(R.drawable.cat_cow_pose_gif)));
-                            arr.add(new DataExercise("Plank",                           2,1,0, 2,30, String.valueOf(R.drawable.plank), String.valueOf(R.drawable.plank_gif)));
-                            arr.add(new DataExercise("Cobra Stretch",                   2,1,0, 1,30, String.valueOf(R.drawable.cobra_stretch), String.valueOf(R.drawable.cobra_stretch_gif)));
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
-                    }
-                    FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.row, arr);
-                    listView.setAdapter(fitnessAdapter);
+                    });
                 }
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
