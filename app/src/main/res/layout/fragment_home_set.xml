@@ -167,11 +167,71 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="- No history -"
+                                android:text=""
                                 android:textColor="@color/white"
                                 android:textSize="14dp"
                                 android:textStyle="bold"
-                                style="@style/CustomFont"/>
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history1"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history2"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history3"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history4"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history5"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                style="@style/CustomFont"
+                                android:layout_marginBottom="10dp"
+                                android:id="@+id/history6"/>
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:text="Full History"
+                                android:textSize="8sp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="0dp"
+                                android:backgroundTint="#4A0F0F"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>

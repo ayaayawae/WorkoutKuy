@@ -35,6 +35,8 @@ public class HomeFragmentSet extends Fragment {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
+    TextView history1, history2, history3, history4, history5, history6;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +49,13 @@ public class HomeFragmentSet extends Fragment {
         planGenderImg = (ImageView) view.findViewById(R.id.planGenderImg);
         intensity = view.findViewById(R.id.intensity);
         resetPlanBtn = view.findViewById(R.id.resetPlan);
+
+        history1 = view.findViewById(R.id.history1);
+        history2 = view.findViewById(R.id.history2);
+        history3 = view.findViewById(R.id.history3);
+        history4 = view.findViewById(R.id.history4);
+        history5 = view.findViewById(R.id.history5);
+        history6 = view.findViewById(R.id.history6);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
@@ -69,6 +78,23 @@ public class HomeFragmentSet extends Fragment {
                         intensity.setText("Intermediate");
                     } else if(intensityLvl == 2) {
                         intensity.setText("Advanced");
+                    }
+                }
+
+                if(snapshot.child("history").exists()){
+                    int i=1;
+                    for(DataSnapshot item : snapshot.child("history").getChildren()){
+                        if(i <= 6 ){
+                            switch (i){
+                                case 1: history1.setText(item.child("date").getValue(String.class)); break;
+                                case 2: history2.setText(item.child("date").getValue(String.class)); break;
+                                case 3: history3.setText(item.child("date").getValue(String.class)); break;
+                                case 4: history4.setText(item.child("date").getValue(String.class)); break;
+                                case 5: history5.setText(item.child("date").getValue(String.class)); break;
+                                case 6: history6.setText(item.child("date").getValue(String.class)); break;
+                            }
+                            i++;
+                        }
                     }
                 }
             }

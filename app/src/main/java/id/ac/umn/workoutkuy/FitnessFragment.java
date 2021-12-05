@@ -1,17 +1,13 @@
 package id.ac.umn.workoutkuy;
 
-import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,9 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Type;
+import java.lang.ref.Reference;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FitnessFragment extends Fragment {
     ListView listView;
@@ -71,38 +66,38 @@ public class FitnessFragment extends Fragment {
         reference.child("plan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    reference2
-                            .child(snapshot.child("gender").getValue(Integer.class) == 1 ? "male" : "female")
-                            .child(snapshot.child("intensity").getValue(Integer.class) == 0 ? "beginner"
-                                    : snapshot.child("intensity").getValue(Integer.class) == 1 ? "intermediate"
-                                    : "advanced")
-                            .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                for (DataSnapshot item : dataSnapshot.getChildren()){
-                                    System.out.println(item.getKey());
-                                    arr.add(new DataExercise(
-                                            item.child("taskName").getValue(String.class),
-                                            snapshot.child("gender").getValue(int.class),
-                                            snapshot.child("intensity").getValue(int.class),
-                                            item.child("reps").getValue(Integer.class),
-                                            item.child("sets").getValue(Integer.class),
-                                            item.child("time").getValue(Integer.class),
-                                            item.child("photo").getValue(String.class),
-                                            item.child("photoGif").getValue(String.class)));
+                if(snapshot.exists() && snapshot.child("gender").exists() && snapshot.child("intensity").exists()) {
+
+                    String gender       = snapshot.child("gender").getValue(Integer.class) == 1 ? "male" : "female";
+                    String intensity    = snapshot.child("intensity").getValue(Integer.class) == 0 ? "beginner"
+                                        : snapshot.child("intensity").getValue(Integer.class) == 1 ? "intermediate" : "advanced";
+
+                    reference2.child(gender).child(intensity).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if(dataSnapshot.exists()){
+                                        for (DataSnapshot item : dataSnapshot.getChildren()){
+                                            arr.add(new DataExercise(
+                                                    item.child("taskName").getValue(String.class),
+                                                    snapshot.child("gender").getValue(int.class),
+                                                    snapshot.child("intensity").getValue(int.class),
+                                                    item.child("reps").getValue(Integer.class),
+                                                    item.child("sets").getValue(Integer.class),
+                                                    item.child("time").getValue(Integer.class),
+                                                    getUri(item.child("photo").getValue(String.class)),
+                                                    getUri(item.child("photoGif").getValue(String.class))
+                                            ));
+                                        }
+                                    }
+                                    FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.item_fitness, arr);
+                                    listView.setAdapter(fitnessAdapter);
                                 }
-                            }
-                            FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.row, arr);
-                            listView.setAdapter(fitnessAdapter);
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                                }
+                            });
                 }
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -125,4 +120,9 @@ public class FitnessFragment extends Fragment {
             }
         });
     }
+
+    public String getUri(String fileName){
+        return String.valueOf(getResources().getIdentifier(fileName,"drawable", getContext().getPackageName()));
+    }
+
 }

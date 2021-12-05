@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 checkPlan = !snapshot.exists() ?  false : true;
                 getSupportFragmentManager().beginTransaction()
-                    .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commit();
+                    .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commitAllowingStateLoss();
             }
 
             @Override
