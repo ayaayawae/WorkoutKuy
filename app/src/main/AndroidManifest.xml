@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkOutKuy">
         <activity
+            android:name=".history.DetailHistory"
+            android:exported="true" />
+        <activity
             android:name=".history.HistoryFitness"
             android:exported="true" />
         <activity

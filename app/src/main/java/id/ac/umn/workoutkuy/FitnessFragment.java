@@ -1,5 +1,7 @@
 package id.ac.umn.workoutkuy;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class FitnessFragment extends Fragment {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     DatabaseReference reference2;
+    Context thiscontext;
 
 
     @Nullable
@@ -53,6 +56,7 @@ public class FitnessFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
         setData(signInAccount.getId());
     }
+
 
     public void setData(String id){
         // Gender (1 = Man; 2 = Woman)
@@ -121,7 +125,7 @@ public class FitnessFragment extends Fragment {
     }
 
     public String getUri(String fileName){
-        return String.valueOf(getResources().getIdentifier(fileName,"drawable", getActivity().getPackageName()));
+        return String.valueOf(getResources().getIdentifier(fileName,"drawable", thiscontext.getPackageName()));
     }
 
 }

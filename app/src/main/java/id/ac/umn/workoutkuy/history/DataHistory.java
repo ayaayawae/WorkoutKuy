@@ -9,7 +9,6 @@ public class DataHistory implements Serializable {
     public DataHistory(String date, String date2) {
         this.date = date;
         this.date2 = date2;
-        System.out.println(date2);
     }
 
     public String getDate() {

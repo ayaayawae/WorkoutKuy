@@ -3,7 +3,10 @@ package id.ac.umn.workoutkuy.history;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 
 import id.ac.umn.workoutkuy.DataExercise;
 import id.ac.umn.workoutkuy.FitnessAdapter;
+import id.ac.umn.workoutkuy.FitnessDetail;
 import id.ac.umn.workoutkuy.R;
 
 public class HistoryFitness extends AppCompatActivity {
@@ -63,6 +67,15 @@ public class HistoryFitness extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                Intent detailHistory = new Intent(getApplicationContext(), DetailHistory.class);
+                detailHistory.putExtra("date", arrHistory.get(position).getDate());
+                startActivity(detailHistory);
             }
         });
     }
