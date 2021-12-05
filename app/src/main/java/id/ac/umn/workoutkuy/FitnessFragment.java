@@ -48,7 +48,6 @@ public class FitnessFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
         listView = view.findViewById(R.id.listView);

@@ -231,7 +231,8 @@
                                 android:textSize="8sp"
                                 android:paddingTop="0dp"
                                 android:paddingBottom="0dp"
-                                android:backgroundTint="#4A0F0F"/>
+                                android:backgroundTint="#4A0F0F"
+                                android:id="@+id/fullHistory"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>

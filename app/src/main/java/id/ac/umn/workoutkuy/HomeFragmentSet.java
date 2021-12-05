@@ -1,5 +1,6 @@
 package id.ac.umn.workoutkuy;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,8 +26,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import id.ac.umn.workoutkuy.history.HistoryFitness;
+
 public class HomeFragmentSet extends Fragment {
-    private Button setPlanBtn, resetPlanBtn;
+    private Button setPlanBtn, resetPlanBtn, fullHistory;
     private ImageView planGenderImg;
     private CardView intensityBtn;
     private TextView intensity;
@@ -56,6 +59,8 @@ public class HomeFragmentSet extends Fragment {
         history4 = view.findViewById(R.id.history4);
         history5 = view.findViewById(R.id.history5);
         history6 = view.findViewById(R.id.history6);
+
+        fullHistory = view.findViewById(R.id.fullHistory);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
@@ -96,12 +101,22 @@ public class HomeFragmentSet extends Fragment {
                             i++;
                         }
                     }
+                }else{
+                    fullHistory.setEnabled(false);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        fullHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), HistoryFitness.class);
+                startActivity(intent);
             }
         });
 
