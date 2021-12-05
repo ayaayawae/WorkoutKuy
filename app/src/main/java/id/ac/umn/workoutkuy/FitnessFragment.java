@@ -37,8 +37,6 @@ public class FitnessFragment extends Fragment {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     DatabaseReference reference2;
-    Context thiscontext;
-
 
     @Nullable
     @Override
@@ -75,32 +73,34 @@ public class FitnessFragment extends Fragment {
                     String intensity    = snapshot.child("intensity").getValue(Integer.class) == 0 ? "beginner"
                                         : snapshot.child("intensity").getValue(Integer.class) == 1 ? "intermediate" : "advanced";
 
-                    reference2.child(gender).child(intensity).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.exists()){
-                                        for (DataSnapshot item : dataSnapshot.getChildren()){
-                                            arr.add(new DataExercise(
-                                                    item.child("taskName").getValue(String.class),
-                                                    snapshot.child("gender").getValue(int.class),
-                                                    snapshot.child("intensity").getValue(int.class),
-                                                    item.child("reps").getValue(Integer.class),
-                                                    item.child("sets").getValue(Integer.class),
-                                                    item.child("time").getValue(Integer.class),
-                                                    getUri(item.child("photo").getValue(String.class)),
-                                                    getUri(item.child("photoGif").getValue(String.class))
-                                            ));
-                                        }
+                    if(FitnessFragment.this.isVisible()) {
+                        reference2.child(gender).child(intensity).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()){
+                                    for (DataSnapshot item : dataSnapshot.getChildren()){
+                                        arr.add(new DataExercise(
+                                                item.child("taskName").getValue(String.class),
+                                                snapshot.child("gender").getValue(int.class),
+                                                snapshot.child("intensity").getValue(int.class),
+                                                item.child("reps").getValue(Integer.class),
+                                                item.child("sets").getValue(Integer.class),
+                                                item.child("time").getValue(Integer.class),
+                                                getUri(item.child("photo").getValue(String.class)),
+                                                getUri(item.child("photoGif").getValue(String.class))
+                                        ));
                                     }
-                                    FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.item_fitness, arr);
-                                    listView.setAdapter(fitnessAdapter);
                                 }
+                                FitnessAdapter fitnessAdapter = new FitnessAdapter(getContext(),R.layout.item_fitness, arr);
+                                listView.setAdapter(fitnessAdapter);
+                            }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
+                            }
+                        });
+                    }
                 }
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -125,7 +125,7 @@ public class FitnessFragment extends Fragment {
     }
 
     public String getUri(String fileName){
-        return String.valueOf(getResources().getIdentifier(fileName,"drawable", thiscontext.getPackageName()));
+        return String.valueOf(getResources().getIdentifier(fileName,"drawable", getContext().getPackageName()));
     }
 
 }
