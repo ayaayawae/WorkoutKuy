@@ -28,13 +28,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:id="@+id/historyCheck"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_gravity="center|start"
-                        android:src="@drawable/ceklis"/>
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/ceklis" />
+
                     <LinearLayout
                         android:id="@+id/LL_date"
                         android:layout_width="match_parent"

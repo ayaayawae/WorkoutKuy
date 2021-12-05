@@ -121,7 +121,7 @@ public class FitnessFragment extends Fragment {
     }
 
     public String getUri(String fileName){
-        return String.valueOf(getResources().getIdentifier(fileName,"drawable", getContext().getPackageName()));
+        return String.valueOf(getResources().getIdentifier(fileName,"drawable", getActivity().getPackageName()));
     }
 
 }
