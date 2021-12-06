@@ -31,8 +31,10 @@ public class HistoryAdapter extends ArrayAdapter<DataHistory> {
         convertView = layoutInflater.inflate(mResource, parent,false );
 
         TextView dateList = convertView.findViewById(R.id.dateList);
+        TextView timeList = convertView.findViewById(R.id.timeList);
 
         dateList.setText(getItem(position).getDate2());
+        timeList.setText(getItem(position).getTime());
         return convertView;
     }
 }

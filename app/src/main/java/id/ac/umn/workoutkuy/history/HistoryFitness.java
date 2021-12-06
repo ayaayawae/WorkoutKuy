@@ -57,7 +57,7 @@ public class HistoryFitness extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     for(DataSnapshot item : snapshot.getChildren()){
-                        arrHistory.add(new DataHistory(item.getKey(), item.child("date").getValue(String.class)));
+                        arrHistory.add(new DataHistory(item.getKey(), item.child("date").getValue(String.class), item.child("time").getValue(String.class)));
                     }
                 }
                 HistoryAdapter historyAdapter = new HistoryAdapter(getApplicationContext(),R.layout.item_history, arrHistory);

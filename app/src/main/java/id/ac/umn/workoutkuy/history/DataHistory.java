@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class DataHistory implements Serializable {
     String date;
     String date2;
+    String time;
 
-    public DataHistory(String date, String date2) {
+    public DataHistory(String date, String date2, String time) {
         this.date = date;
         this.date2 = date2;
+        this.time = time;
     }
 
     public String getDate() {
@@ -19,5 +21,7 @@ public class DataHistory implements Serializable {
         return date2;
     }
 
-
+    public String getTime() {
+        return time;
+    }
 }

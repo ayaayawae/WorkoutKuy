@@ -88,6 +88,7 @@ public class FitnessDetail extends AppCompatActivity {
         Date date = new Date();
         SimpleDateFormat DMY = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         SimpleDateFormat MDY = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.getDefault());
         String dateDMY = DMY.format(date); // Buat nampilin aja
         String dateMDY = MDY.format(date); // Buat ngurutin
         reference.child("history")
@@ -97,7 +98,7 @@ public class FitnessDetail extends AppCompatActivity {
                 .child(String.valueOf(num+1))
                 .setValue(data.get(num).getTaskName());
         reference.child("history").child(dateMDY).child("date").setValue(dateDMY);
-
+        reference.child("history").child(dateMDY).child("time").setValue(time.format(date));
         reference.child("progress").child(String.valueOf(num+1)).setValue("true");
     }
 

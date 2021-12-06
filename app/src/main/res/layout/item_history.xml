@@ -8,32 +8,43 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:backgroundTint="#7C8998"
         app:cardCornerRadius="10dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
             <ImageView
-                android:padding="10dp"
                 android:id="@+id/taskPhoto"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ceklis"/>
+                android:layout_width="70dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="70dp"
+                android:src="@drawable/ceklis_ijo_fix"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
                 android:orientation="vertical"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="Tanggal"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:id="@+id/dateList"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:id="@+id/dateList"/>
+                    android:id="@+id/timeList"/>
             </LinearLayout>
 
         </LinearLayout>
