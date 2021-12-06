@@ -99,7 +99,7 @@ public class ProfileFragment extends Fragment {
     private void insertDataToDatabase(Uri mImageUris) {
         if(mImageUris != null) {
             Toast.makeText(getContext(), "Choto Minute", Toast.LENGTH_LONG).show();
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis()
+            StorageReference fileReference = storageReference.child("profilePhoto"
                     + "." + getFileExtension(mImageUris));
 
             fileReference.putFile(mImageUris)
@@ -152,7 +152,7 @@ public class ProfileFragment extends Fragment {
         if(signInAccount != null) {
             rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
             reference = rootNode.getReference("users").child(signInAccount.getId());
-            storageReference = FirebaseStorage.getInstance().getReference("uploads");
+            storageReference = FirebaseStorage.getInstance().getReference("uploads").child(signInAccount.getId());
 
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
