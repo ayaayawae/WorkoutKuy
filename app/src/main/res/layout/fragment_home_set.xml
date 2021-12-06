@@ -128,7 +128,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/intensityBtn"
                         android:layout_width="160dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:background="@drawable/customborder"
                         android:backgroundTint="#334756"
@@ -160,14 +160,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <Button
-                        android:id="@+id/resetPlan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Reset Plan"
-                        android:textColor="#FFFFFF"
-                        android:backgroundTint="#17FFFFFF"/>
+
 
                 </LinearLayout>
                 <LinearLayout
@@ -268,7 +261,23 @@
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp">
+                <Button
+                    android:id="@+id/resetPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Reset Plan"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#17FFFFFF"/>
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 
