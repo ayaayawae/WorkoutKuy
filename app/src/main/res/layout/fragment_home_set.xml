@@ -35,6 +35,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/image6"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#99000000"
+                    android:padding="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Today:"
+                        android:textSize="15dp"
+                        style="@style/CustomFont"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/12 Task Completed"
+                        style="@style/CustomFont"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/progress"/>
+                    <ProgressBar
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="198dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressBackgroundTint="#FFFFFF"
+                        android:progressTint="#34a8eb"
+                        android:id="@+id/progressBar"/>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <LinearLayout

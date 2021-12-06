@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +27,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.Locale;
 
 import id.ac.umn.workoutkuy.history.HistoryFitness;
 
@@ -40,9 +44,15 @@ public class HomeFragmentSet extends Fragment {
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    DatabaseReference reference2;
 
     TextView history1, history2, history3, history4, history5, history6;
     ArrayList<String> history = new ArrayList<>();
+    TextView progress;
+    ProgressBar progressBar;
+
+    int totalTask, taskDone;
+    String gender2, intensity2;
 
     @Nullable
     @Override
@@ -56,20 +66,21 @@ public class HomeFragmentSet extends Fragment {
         planGenderImg = (ImageView) view.findViewById(R.id.planGenderImg);
         intensity = view.findViewById(R.id.intensity);
         resetPlanBtn = view.findViewById(R.id.resetPlan);
-
         history1 = view.findViewById(R.id.history1);
         history2 = view.findViewById(R.id.history2);
         history3 = view.findViewById(R.id.history3);
         history4 = view.findViewById(R.id.history4);
         history5 = view.findViewById(R.id.history5);
         history6 = view.findViewById(R.id.history6);
-
         fullHistory = view.findViewById(R.id.fullHistory);
+        progress = view.findViewById(R.id.progress);
+        progressBar = view.findViewById(R.id.progressBar);
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
         rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
         reference = rootNode.getReference("users").child(signInAccount.getId());
+        reference2 = rootNode.getReference("dataExercise");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,20 +88,50 @@ public class HomeFragmentSet extends Fragment {
                 if(snapshot.child("plan").child("gender").exists() && snapshot.child("plan").child("intensity").exists()){
                     if(snapshot.child("plan").child("gender").getValue(Integer.class) == 1) {
                         planGenderImg.setImageResource(R.drawable.image4);
+                        gender2 = "male";
                     } else {
                         planGenderImg.setImageResource(R.drawable.image5);
+                        gender2 = "female";
                     }
                     intensityLvl = snapshot.child("plan").child("intensity").getValue(Integer.class);
                     if(intensityLvl == 0) {
                         intensity.setText("Beginner");
+                        intensity2 = "beginner";
                     } else if(intensityLvl == 1) {
                         intensity.setText("Intermediate");
+                        intensity2 = "intermediate";
                     } else if(intensityLvl == 2) {
                         intensity.setText("Advanced");
+                        intensity2 = "advanced";
                     }
                 }
 
+                Date date = new Date();
+                SimpleDateFormat YMD = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+
+
                 if(snapshot.child("history").exists()){
+                    System.out.println(YMD.format(date));
+                    if(snapshot.child("history").child(YMD.format(date)).exists()){
+                        taskDone = (int) snapshot.child("history").child(YMD.format(date)).child("detail").getChildrenCount();
+                        reference2.child(gender2).child(intensity2).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                totalTask = (int) dataSnapshot.getChildrenCount();
+                                progress.setText(taskDone + "/" + totalTask + " Task Completed");
+                                progressBar.setMax(totalTask);
+                                progressBar.setProgress((taskDone));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+                    }
                     history.clear();
                     for(DataSnapshot item : snapshot.child("history").getChildren()){
                         history.add(item.child("date").getValue(String.class));
@@ -136,7 +177,6 @@ public class HomeFragmentSet extends Fragment {
         resetPlanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Sini");
                 reference = rootNode.getReference("users").child(signInAccount.getId());
                 reference.child("plan").removeValue();
                 reference.child("progress").removeValue();
