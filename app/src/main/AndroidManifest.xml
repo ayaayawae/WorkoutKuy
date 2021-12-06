@@ -15,12 +15,15 @@
         android:theme="@style/Theme.WorkOutKuy">
         <activity
             android:name=".history.DetailHistory"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".history.HistoryFitness"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".FitnessDetail"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
@@ -30,6 +33,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

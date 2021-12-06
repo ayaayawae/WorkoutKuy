@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+            getSupportFragmentManager().beginTransaction()
+                    .replace(nav_host.getId(), checkPlan ? new HomeFragment() : new HomeFragmentSet()).commitAllowingStateLoss();
             setCheckPlan(signInAccount.getId(),nav_host.getId());
         }
 
