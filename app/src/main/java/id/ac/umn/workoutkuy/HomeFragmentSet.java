@@ -91,6 +91,7 @@ public class HomeFragmentSet extends Fragment {
                 }
 
                 if(snapshot.child("history").exists()){
+                    history.clear();
                     for(DataSnapshot item : snapshot.child("history").getChildren()){
                         history.add(item.child("date").getValue(String.class));
                     }
