@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getContext(),"Plan berhasil di-set, semangat!",Toast.LENGTH_LONG).show();
 
 //                    System.out.println(nav_host.getId());
-                    getParentFragmentManager().beginTransaction().replace(nav_host.getId(), new FitnessFragment()).commit();
+//                    getParentFragmentManager().beginTransaction().replace(nav_host.getId(), new FitnessFragment()).commit();
 //                    getSupportFragmentManager().beginTransaction()
 //                            .replace(nav_host.getId(), selectedFragment).commit();
                 }

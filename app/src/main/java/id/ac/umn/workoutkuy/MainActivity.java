@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     public boolean checkPlan;
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation);
         FrameLayout nav_host = findViewById(R.id.fragment_container);
+
+        bottomNav.setItemIconTintList(null);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -101,12 +104,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 checkPlan = !snapshot.exists() ?  false : true;
-                if(checkPlan == false) {
-                    getSupportFragmentManager().beginTransaction().
-                            replace(navHostId, new HomeFragment()).commitAllowingStateLoss();
-                }
-//                getSupportFragmentManager().beginTransaction()
-//                    .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commitAllowingStateLoss();
+//                    getSupportFragmentManager().beginTransaction().
+//                            replace(navHostId, new HomeFragment()).commitAllowingStateLoss();
+                getSupportFragmentManager().beginTransaction()
+                    .replace(navHostId, snapshot.exists() ? new HomeFragmentSet() : new HomeFragment()).commitAllowingStateLoss();
             }
 
             @Override
