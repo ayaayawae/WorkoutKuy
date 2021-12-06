@@ -47,6 +47,8 @@
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/black"
             android:text="logout"
             android:layout_marginTop="20dp"/>
 
@@ -69,11 +71,12 @@
                     app:civ_border_color="#FFFF"
                     app:civ_border_width="2dp" />
                 <TextView
+                    android:id="@+id/daysActive"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="14 Days Streak"
+                    android:text="Days Active"
                     android:textSize="30dp"
                     android:textColor="@color/white"
                     style="@style/CustomFont"/>

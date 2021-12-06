@@ -59,7 +59,7 @@ public class ProfileFragment extends Fragment {
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 3;
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 4;
 
-    private TextView profileName;
+    private TextView profileName, daysActive;
     private Button logoutBtn;
     private CircleImageView profileImg;
     private ImageView editIcon;
@@ -143,6 +143,7 @@ public class ProfileFragment extends Fragment {
         logoutBtn = view.findViewById(R.id.btnLogout);
         profileImg = view.findViewById(R.id.profile_image);
         editIcon = (ImageView) view.findViewById(R.id.editIcon);
+        daysActive = view.findViewById(R.id.daysActive);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         AlertDialog.Builder alert2 = new AlertDialog.Builder(getContext());
@@ -157,11 +158,16 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     profileName.setText(snapshot.child("name").getValue(String.class));
-//                    System.out.println(signInAccount.getPhotoUrl());
                     Picasso.get().load(snapshot.child("url_picture").getValue(String.class))
                             .resize(200, 200)
                             .centerCrop()
                             .into(profileImg);
+
+                    if(snapshot.child("history").exists()) {
+                        daysActive.setText(String.valueOf(snapshot.child("history").getChildrenCount()) + " days active");
+                    } else {
+                        daysActive.setText("0 days active");
+                    }
                 }
 
                 @Override
