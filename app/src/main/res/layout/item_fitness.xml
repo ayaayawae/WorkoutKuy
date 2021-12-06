@@ -9,8 +9,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#7C8998"
-        app:cardCornerRadius="10dp">
+        app:cardBackgroundColor="#7C8998"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/containerItemFitness">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

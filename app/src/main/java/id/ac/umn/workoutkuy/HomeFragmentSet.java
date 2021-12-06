@@ -126,6 +126,7 @@ public class HomeFragmentSet extends Fragment {
                 System.out.println("Sini");
                 reference = rootNode.getReference("users").child(signInAccount.getId());
                 reference.child("plan").removeValue();
+                reference.child("progress").removeValue();
             }
         });
 

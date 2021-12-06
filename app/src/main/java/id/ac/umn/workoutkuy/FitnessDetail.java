@@ -84,7 +84,7 @@ public class FitnessDetail extends AppCompatActivity {
         });
     }
 
-    public void pushHistory(){
+    public void pushHistoryAndProgress(){
         Date date = new Date();
         SimpleDateFormat DMY = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         SimpleDateFormat MDY = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
@@ -97,11 +97,12 @@ public class FitnessDetail extends AppCompatActivity {
                 .child(String.valueOf(num+1))
                 .setValue(data.get(num).getTaskName());
         reference.child("history").child(dateMDY).child("date").setValue(dateDMY);
+
+        reference.child("progress").child(String.valueOf(num+1)).setValue("true");
     }
 
     public void setContent(){
-        pushHistory();
-
+        pushHistoryAndProgress();
         taskNum.setText("Step " + (num+1));
         taskName.setText(data.get(num).getTaskName());
         taskGIF.setImageResource(Integer.parseInt(data.get(num).getPhotoGif()));
