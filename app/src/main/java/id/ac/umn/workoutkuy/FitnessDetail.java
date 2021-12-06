@@ -87,19 +87,20 @@ public class FitnessDetail extends AppCompatActivity {
     public void pushHistoryAndProgress(){
         Date date = new Date();
         SimpleDateFormat DMY = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        SimpleDateFormat MDY = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        SimpleDateFormat YMD = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         SimpleDateFormat time = new SimpleDateFormat("HH:mm", Locale.getDefault());
         String dateDMY = DMY.format(date); // Buat nampilin aja
-        String dateMDY = MDY.format(date); // Buat ngurutin
+        String dateYMD = YMD.format(date); // Buat ngurutin
         reference.child("history")
-                .child(dateMDY)
-                .child(String.valueOf(data.get(num).getGender()))
-                .child(String.valueOf(data.get(num).getIntensity()))
+                .child(dateYMD)
+//                .child(String.valueOf(data.get(num).getGender()))
+//                .child(String.valueOf(data.get(num).getIntensity()))
+//                .child(String.valueOf(num+1))
+                .child("detail")
                 .child(String.valueOf(num+1))
                 .setValue(data.get(num).getTaskName());
-        reference.child("history").child(dateMDY).child("date").setValue(dateDMY);
-        reference.child("history").child(dateMDY).child("time").setValue(time.format(date));
-        reference.child("progress").child(String.valueOf(num+1)).setValue("true");
+        reference.child("history").child(dateYMD).child("date").setValue(dateDMY);
+        reference.child("history").child(dateYMD).child("time").setValue(time.format(date));
     }
 
     public void setContent(){

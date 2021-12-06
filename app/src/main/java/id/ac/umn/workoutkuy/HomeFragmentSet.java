@@ -102,7 +102,9 @@ public class HomeFragmentSet extends Fragment {
                         }
                     }
                 }else{
+                    history1.setText("- No History -");
                     fullHistory.setEnabled(false);
+                    fullHistory.setVisibility(View.GONE);
                 }
             }
 
@@ -127,6 +129,8 @@ public class HomeFragmentSet extends Fragment {
                 reference = rootNode.getReference("users").child(signInAccount.getId());
                 reference.child("plan").removeValue();
                 reference.child("progress").removeValue();
+                reference.child("history").removeValue();
+
             }
         });
 

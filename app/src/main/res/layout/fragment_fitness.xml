@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Plan"
+        android:text="Today's Activities"
         android:textAlignment="center"
         android:textSize="25dp"
         android:textColor="#F0A500"

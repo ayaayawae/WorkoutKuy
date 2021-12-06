@@ -23,7 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class FitnessAdapter extends ArrayAdapter<DataExercise> {
     private Context mContext;
@@ -54,8 +57,15 @@ public class FitnessAdapter extends ArrayAdapter<DataExercise> {
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
 
+        Date date = new Date();
+        SimpleDateFormat YMD = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
         rootNode = FirebaseDatabase.getInstance("https://workoutkuy-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        reference = rootNode.getReference("users").child(signInAccount.getId()).child("progress");
+        reference = rootNode.getReference("users")
+                .child(signInAccount.getId())
+                .child("history")
+                .child(YMD.format(date))
+                .child("detail");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,9 +80,6 @@ public class FitnessAdapter extends ArrayAdapter<DataExercise> {
 
             }
         });
-
-
-
 
         taskPhoto.setImageResource(Integer.parseInt(getItem(position).getPhoto()));
         taskName.setText(getItem(position).getTaskName());
