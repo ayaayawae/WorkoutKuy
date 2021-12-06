@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,10 +38,12 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    FrameLayout nav_host;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        nav_host = (FrameLayout) container;
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -106,6 +109,11 @@ public class HomeFragment extends Fragment {
                     reference.child("plan").child("gender").setValue(genderPlan);
                     reference.child("plan").child("intensity").setValue(intensityLvl);
                     Toast.makeText(getContext(),"Plan berhasil di-set, semangat!",Toast.LENGTH_LONG).show();
+
+//                    System.out.println(nav_host.getId());
+                    getParentFragmentManager().beginTransaction().replace(nav_host.getId(), new FitnessFragment()).commit();
+//                    getSupportFragmentManager().beginTransaction()
+//                            .replace(nav_host.getId(), selectedFragment).commit();
                 }
             }
         });
