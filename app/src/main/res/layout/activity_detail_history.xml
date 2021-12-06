@@ -6,8 +6,31 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:background="@color/darkBlue"
-    android:orientation="vertical"
-    android:paddingTop="20sp">
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0A500"
+        android:padding="7dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:layout_marginRight="10dp"
+            android:onClick="finishActivity"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Workout"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

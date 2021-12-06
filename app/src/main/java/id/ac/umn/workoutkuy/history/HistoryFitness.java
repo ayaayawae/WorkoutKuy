@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import id.ac.umn.workoutkuy.DataExercise;
 import id.ac.umn.workoutkuy.FitnessAdapter;
@@ -45,6 +47,8 @@ public class HistoryFitness extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
+        getSupportActionBar().hide();
+
         setData(signInAccount.getId());
     }
 
@@ -60,6 +64,7 @@ public class HistoryFitness extends AppCompatActivity {
                         arrHistory.add(new DataHistory(item.getKey(), item.child("date").getValue(String.class), item.child("time").getValue(String.class)));
                     }
                 }
+                Collections.reverse(arrHistory);
                 HistoryAdapter historyAdapter = new HistoryAdapter(getApplicationContext(),R.layout.item_history, arrHistory);
                 listView.setAdapter(historyAdapter);
             }
@@ -79,4 +84,9 @@ public class HistoryFitness extends AppCompatActivity {
             }
         });
     }
+
+    public void finishActivity(View v){
+        finish();
+    }
+
 }

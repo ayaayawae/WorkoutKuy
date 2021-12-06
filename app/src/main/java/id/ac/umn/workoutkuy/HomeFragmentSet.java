@@ -26,6 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import id.ac.umn.workoutkuy.history.HistoryFitness;
 
 public class HomeFragmentSet extends Fragment {
@@ -39,6 +42,7 @@ public class HomeFragmentSet extends Fragment {
     DatabaseReference reference;
 
     TextView history1, history2, history3, history4, history5, history6;
+    ArrayList<String> history = new ArrayList<>();
 
     @Nullable
     @Override
@@ -87,20 +91,26 @@ public class HomeFragmentSet extends Fragment {
                 }
 
                 if(snapshot.child("history").exists()){
-                    int i=1;
                     for(DataSnapshot item : snapshot.child("history").getChildren()){
-                        if(i <= 6 ){
+                        history.add(item.child("date").getValue(String.class));
+                    }
+                    Collections.reverse(history);
+                    int i = 0;
+                    for(String item : history){
+                        if(i<6){
                             switch (i){
-                                case 1: history1.setText(item.child("date").getValue(String.class)); break;
-                                case 2: history2.setText(item.child("date").getValue(String.class)); break;
-                                case 3: history3.setText(item.child("date").getValue(String.class)); break;
-                                case 4: history4.setText(item.child("date").getValue(String.class)); break;
-                                case 5: history5.setText(item.child("date").getValue(String.class)); break;
-                                case 6: history6.setText(item.child("date").getValue(String.class)); break;
+                                case 0: history1.setText(item); break;
+                                case 1: history2.setText(item); break;
+                                case 2: history3.setText(item); break;
+                                case 3: history4.setText(item); break;
+                                case 4: history5.setText(item); break;
+                                case 5: history6.setText(item); break;
                             }
                             i++;
                         }
                     }
+
+
                 }else{
                     history1.setText("- No History -");
                     fullHistory.setEnabled(false);

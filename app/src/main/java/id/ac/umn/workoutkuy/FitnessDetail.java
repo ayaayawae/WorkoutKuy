@@ -73,6 +73,8 @@ public class FitnessDetail extends AppCompatActivity {
             }
         });
 
+        getSupportActionBar().hide();
+
         taskNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +106,6 @@ public class FitnessDetail extends AppCompatActivity {
     }
 
     public void setContent(){
-        pushHistoryAndProgress();
         taskNum.setText("Step " + (num+1));
         taskName.setText(data.get(num).getTaskName());
         taskGIF.setImageResource(Integer.parseInt(data.get(num).getPhotoGif()));
@@ -119,6 +120,7 @@ public class FitnessDetail extends AppCompatActivity {
             taskStart.setEnabled(true);
             taskStart.setVisibility(View.VISIBLE);
         }
+        pushHistoryAndProgress();
     }
 
     public void startTimer(View view){
@@ -147,5 +149,9 @@ public class FitnessDetail extends AppCompatActivity {
         try {
             Thread.sleep((long) (seconds * 1000));
         } catch (InterruptedException e) {}
+    }
+
+    public void finishActivity(View v){
+        finish();
     }
 }
