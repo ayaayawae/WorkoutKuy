@@ -10,7 +10,7 @@ android {
         applicationId "id.ac.umn.workoutkuy"
         minSdk 25
         targetSdk 30
-        versionCode 3
+        versionCode 5
         versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
