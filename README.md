@@ -26,6 +26,8 @@
     </p>
   </div>
 </div>
+<p align='center'><a href='https://play.google.com/store/apps/details?id=id.ac.umn.workoutkuy&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' width="200" src='https://play.google.com/intl/en/badges/static/images/badges/en_badge_web_generic.png'/></a>
+</p>
 <p align="center">
 <img width="100" src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-built_black.png?hl=id" alt="Firebase">
 </p>
